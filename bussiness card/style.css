@@ -1,0 +1,62 @@
+:root{--steel:#c9cbcd;--dark:#2b2d2f;}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url("bg.jpg") center/cover no-repeat fixed;
+  font-family:'Jost',sans-serif;color:#ddd;display:grid;place-items:center;overflow:hidden}
+.stage{display:flex;flex-direction:column;align-items:center;gap:28px;}
+.card{width:min(300px,78vw);aspect-ratio:55/90;position:relative;transform-style:preserve-3d;opacity:0;
+  transform:perspective(1200px) rotateY(180deg) scale(.8);transform-origin:50% 50%}
+.side{position:absolute;inset:0;border-radius:14px;display:grid;place-items:center;text-align:center;overflow:hidden;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  background:
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='500'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+   linear-gradient(115deg,#9a9c9f 0%,#e4e6e8 22%,#b4b6b9 40%,#f1f2f3 58%,#a3a5a8 78%,#d6d8da 100%);
+  background-size:cover;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),inset 0 0 0 4px rgba(0,0,0,.08),0 30px 60px rgba(0,0,0,.65)}
+.back{transform:rotateY(180deg)}
+.card.show{animation:pop 2.4s cubic-bezier(.45,.05,.25,1) forwards}
+@keyframes pop{
+  0%{opacity:0;transform:perspective(1200px) rotateY(180deg) scale(.8)}
+  25%{opacity:1}
+  100%{opacity:1;transform:perspective(1200px) rotateY(360deg) scale(1)}
+}
+.side::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);
+  background-size:250% 100%;background-position:120% 0;transition:background-position 1.2s}
+.front:hover::after{background-position:-20% 0}
+.face{display:flex;flex-direction:column;align-items:center;gap:14px;padding:24px}
+.logo.big{width:120px}
+.logo{width:74px;fill:#3b3d40;filter:drop-shadow(0 1px 0 rgba(255,255,255,.9)) drop-shadow(0 -1px 0 rgba(0,0,0,.35))}
+.engrave{color:#4a4c4f;text-shadow:0 1px 0 rgba(255,255,255,.9),0 -1px 0 rgba(0,0,0,.35)}
+h1.engrave{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.7rem;letter-spacing:.14em;line-height:1.2}
+.small{font-weight:400;font-size:.8rem;letter-spacing:.12em}
+.actions{display:flex;gap:12px}
+.actions button,.actions a{font:400 .9rem 'Jost',sans-serif;color:#eee;background:transparent;border:1px solid #777;padding:10px 20px;border-radius:30px;text-decoration:none;cursor:pointer;transition:.2s}
+.actions button:hover,.actions a:hover{background:#eee;color:#111}
+.actions button:focus-visible,.actions a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.actions{opacity:0;transition:opacity .8s 1.8s}
+.actions.show{opacity:1}
+@media (prefers-reduced-motion:reduce){.card.show{animation:none;opacity:1;transform:none}}
+.float{
+  animation:
+    hover 5s ease-in-out 2.6s infinite,
+    tilt 5s ease-in-out 3s infinite;
+}
+@keyframes hover{
+  0%,100%{translate:0 0}
+  50%{translate:0 -34px}
+}
+@keyframes tilt{
+  0%,100%{rotate:0deg}
+  25%{rotate:-1.5deg}
+  75%{rotate:1.5deg}
+}
+.spin{
+  transform-style:preserve-3d;
+  transform:perspective(1200px) rotateX(0deg) rotateY(0deg);
+  touch-action:none;
+  cursor:grab;
+  user-select:none;
+  -webkit-user-select:none;
+}
+.spin:active{cursor:grabbing}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name – Artist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="stage">
+  <div class="float">
+  <div class="spin" id="spin">
+  <div class="card" id="card">
+
+    <div class="side back"><svg class="logo big" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M18 66C30 24 62 14 84 30C70 32 56 42 50 62C44 80 28 88 18 66Z"/>
+        <circle cx="76" cy="72" r="7"/>
+      </svg></div>
+    <div class="side front">
+      <div class="face">
+      <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M18 66C30 24 62 14 84 30C70 32 56 42 50 62C44 80 28 88 18 66Z"/>
+        <circle cx="76" cy="72" r="7"/>
+      </svg>
+      <h1 class="engrave" id="name">YOUR NAME</h1>
+      <p class="engrave small" id="role">Painter &amp; Visual Artist</p>
+      </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="actions">
+    <button id="saveBtn">Save card</button>
+    <a id="siteBtn" href="#" target="_blank" rel="noopener">Visit site</a>
+  </div>
+</main>
+<div id="qrTemp" hidden></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
